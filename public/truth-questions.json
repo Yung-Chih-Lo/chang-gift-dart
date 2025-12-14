@@ -1,0 +1,657 @@
+[
+  {
+    "id": "truth_01",
+    "type": "truth",
+    "question": "說出你最尷尬的一次約會經歷",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_02",
+    "type": "truth",
+    "question": "你曾經偷偷喜歡過誰，但從來沒說出口？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_03",
+    "type": "truth",
+    "question": "說出你人生中最丟臉的一刻",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_04",
+    "type": "truth",
+    "question": "如果你只能吃一種食物過一輩子，你會選什麼？為什麼？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_05",
+    "type": "truth",
+    "question": "你最害怕什麼？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_01",
+    "type": "dare",
+    "question": "模仿一種動物叫聲，叫到大家認出為止",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_02",
+    "type": "dare",
+    "question": "用屁股寫出你的名字",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_03",
+    "type": "dare",
+    "question": "唱一首歌，但要用rap的方式唱出來",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_04",
+    "type": "dare",
+    "question": "喝下一杯混合飲料（由大家調配）",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_05",
+    "type": "dare",
+    "question": "做10個伏地挺身",
+    "difficulty": "easy"
+  },
+  {
+    "id": "special_01",
+    "type": "special",
+    "question": "匿名公開一個禮物內容",
+    "difficulty": "medium",
+    "effect": "reveal_random_gift"
+  },
+  {
+    "id": "truth_06",
+    "type": "truth",
+    "question": "你最喜歡這個活動的哪一點？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_06",
+    "type": "dare",
+    "question": "和隔壁的人交換一件衣服穿",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_07",
+    "type": "truth",
+    "question": "如果你能回到過去改變一件事情，你會改變什麼？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_07",
+    "type": "dare",
+    "question": "跳一支尷尬的舞",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_08",
+    "type": "dare",
+    "question": "讓大家幫你畫一個鬍子（用麥克筆）",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_08",
+    "type": "truth",
+    "question": "你曾經打破過什麼規定？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_09",
+    "type": "dare",
+    "question": "說一句讓大家笑的話",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_09",
+    "type": "truth",
+    "question": "你最大的祕密是什麼？（可以選擇不說，但要接受懲罰）",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_10",
+    "type": "truth",
+    "question": "有沒有喜歡的人？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_11",
+    "type": "truth",
+    "question": "有沒有男朋友／女朋友？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_12",
+    "type": "truth",
+    "question": "喜歡另一半怎麼叫你？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_13",
+    "type": "truth",
+    "question": "喜歡什麼類型的對象？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_14",
+    "type": "truth",
+    "question": "喜歡什麼樣的外型？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_15",
+    "type": "truth",
+    "question": "對另一半的身高有沒有要求？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_16",
+    "type": "truth",
+    "question": "喜歡肉一點還是瘦一點的？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_17",
+    "type": "truth",
+    "question": "喜歡異性留什麼髮型？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_18",
+    "type": "truth",
+    "question": "怎樣的穿搭風格吸引你？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_19",
+    "type": "truth",
+    "question": "老實說是不是顏狗？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_20",
+    "type": "truth",
+    "question": "對個性有什麼條件？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_21",
+    "type": "truth",
+    "question": "有什麼專長會加分？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_22",
+    "type": "truth",
+    "question": "最討厭怎樣的人？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_23",
+    "type": "truth",
+    "question": "初戀是什麼時候？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_25",
+    "type": "truth",
+    "question": "交往過幾個人？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_26",
+    "type": "truth",
+    "question": "初吻對象是誰？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_27",
+    "type": "truth",
+    "question": "跟前任交往多久？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_28",
+    "type": "truth",
+    "question": "為什麼跟前任分手？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_29",
+    "type": "truth",
+    "question": "喜歡放閃還是會覺得丟臉？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_31",
+    "type": "truth",
+    "question": "年紀小可以多小，年紀大可以多大？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_32",
+    "type": "truth",
+    "question": "喜歡幼齒的還是成熟的？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_33",
+    "type": "truth",
+    "question": "對男生／女生怎樣的舉動最沒輒？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_34",
+    "type": "truth",
+    "question": "有一見鍾情過嗎？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_35",
+    "type": "truth",
+    "question": "未來想不想結婚？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_36",
+    "type": "truth",
+    "question": "結婚的必要條件是什麼？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_37",
+    "type": "truth",
+    "question": "想要小孩嗎？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_38",
+    "type": "truth",
+    "question": "有過在戶外的經驗嗎？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_39",
+    "type": "truth",
+    "question": "會希望另一半下廚嗎？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_40",
+    "type": "truth",
+    "question": "如果明天就是世界末日，想做什麼？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_41",
+    "type": "truth",
+    "question": "有沒有過砲友？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_42",
+    "type": "truth",
+    "question": "下輩子想當女生還是男生？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_43",
+    "type": "truth",
+    "question": "另一半有車是加分還是必要？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_44",
+    "type": "truth",
+    "question": "青春期做過最丟臉的事？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_45",
+    "type": "truth",
+    "question": "喜歡另一半為你做什麼？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_46",
+    "type": "truth",
+    "question": "收過什麼最開心的禮物？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_47",
+    "type": "truth",
+    "question": "接受伴侶擦香水嗎？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_48",
+    "type": "truth",
+    "question": "外表、個性和財力，哪個最重要？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_49",
+    "type": "truth",
+    "question": "是晨型人還是夜型人？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_50",
+    "type": "truth",
+    "question": "平日晚上都在做什麼？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_51",
+    "type": "truth",
+    "question": "想不想每天跟男友／女友膩在一起？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_52",
+    "type": "truth",
+    "question": "情侶一週見面幾次算正常？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_53",
+    "type": "truth",
+    "question": "假日喜歡待在家還是出去玩？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_54",
+    "type": "truth",
+    "question": "有沒有喜歡過「老師」？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_55",
+    "type": "truth",
+    "question": "有沒有喜歡過「親戚」？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_56",
+    "type": "truth",
+    "question": "情侶紀念日重要嗎？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_57",
+    "type": "truth",
+    "question": "想跟伴侶一起嘗試什麼事？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_58",
+    "type": "truth",
+    "question": "喜歡撒嬌還是寵對方？",
+    "difficulty": "easy"
+  },
+  {
+    "id": "truth_59",
+    "type": "truth",
+    "question": "被提過分手嗎？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_60",
+    "type": "truth",
+    "question": "被劈腿過嗎？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_61",
+    "type": "truth",
+    "question": "對你來說怎樣算劈腿？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_62",
+    "type": "truth",
+    "question": "發飆會怎麼樣？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_63",
+    "type": "truth",
+    "question": "想幾歲結婚？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_64",
+    "type": "truth",
+    "question": "有跟伴侶同居過嗎？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_65",
+    "type": "truth",
+    "question": "最誇張的爛桃花經驗是？",
+    "difficulty": "hard"
+  },
+  {
+    "id": "truth_66",
+    "type": "truth",
+    "question": "會主動告白嗎？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_67",
+    "type": "truth",
+    "question": "談戀愛會不會有小心機？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_68",
+    "type": "truth",
+    "question": "接受跟潛在對象吃飯AA嗎？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "truth_69",
+    "type": "truth",
+    "question": "夫妻財產應該分開嗎？",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_10",
+    "type": "dare",
+    "question": "模仿一位名人說一段話",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_11",
+    "type": "dare",
+    "question": "做10個深蹲",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_12",
+    "type": "dare",
+    "question": "跳肚皮舞",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_13",
+    "type": "dare",
+    "question": "用屁股寫字，直到有人猜出才算贏（筆畫需要超過5劃）",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_14",
+    "type": "dare",
+    "question": "對現場其中一個人，說一段沒跟他說過的真心話",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_15",
+    "type": "dare",
+    "question": "無音樂跳舞30秒",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_16",
+    "type": "dare",
+    "question": "親現場其中一個人的臉",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_17",
+    "type": "dare",
+    "question": "給一個一年以上沒聯繫的人發消息",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_18",
+    "type": "dare",
+    "question": "打開你的Line或IG，打開第一個對話給大家看",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_19",
+    "type": "dare",
+    "question": "學鴨子叫直到你的下一個回合開始",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_20",
+    "type": "dare",
+    "question": "做鬼臉並自拍，且發上限時動態打上「我是酒鬼」",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_21",
+    "type": "dare",
+    "question": "打電話跟朋友借3000元，成功借到算成功，沒借到算失敗（只限朋友，只有一次機會）",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_22",
+    "type": "dare",
+    "question": "旋轉5圈後走直線，走成功算過關，走失敗就懲罰",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_23",
+    "type": "dare",
+    "question": "學雞叫直到你的下一個回合開始",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_24",
+    "type": "dare",
+    "question": "對著沒人的地方大聲唱自己的主題曲30秒",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_25",
+    "type": "dare",
+    "question": "模仿現場一個人，並讓大家猜，猜出來才算贏",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_26",
+    "type": "dare",
+    "question": "用最嗲的語氣對右邊的人說：「哥哥～人家好喜歡你喔～🥺」",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_27",
+    "type": "dare",
+    "question": "打開手機相簿，倒數第5張給大家看（不能偷換）",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_28",
+    "type": "dare",
+    "question": "假裝你是剛被撈上岸的魚，邊在地上彈跳邊說：「這就是人類的世界嗎？」",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_29",
+    "type": "dare",
+    "question": "模仿一隻「發情的公雞」，然後繞場一圈",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_30",
+    "type": "dare",
+    "question": "對著空氣壁深情獨舞 15 秒，還要時不時親吻「空氣戀人」",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_31",
+    "type": "dare",
+    "question": "走到某人面前，握住他的手，深情地看著他說：「你是我命中注定的那個人……」",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_32",
+    "type": "dare",
+    "question": "假裝某人是你的「失散多年親兄弟」，激動地抱住他大喊：「你終於回來了！」",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_33",
+    "type": "dare",
+    "question": "聽從你左邊的朋友下的一道命令",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_34",
+    "type": "dare",
+    "question": "用「超級驚訝」的語氣對某個人說：「你怎麼可以不知道這件事？！」然後講一件超普通的事",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_35",
+    "type": "dare",
+    "question": "拿起你手邊的東西開始施展魔法 10 秒",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_36",
+    "type": "dare",
+    "question": "請用新聞主播的方式，講述你最近的一場夢",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_37",
+    "type": "dare",
+    "question": "用Siri的口吻回答在場某個人問的問題",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_38",
+    "type": "dare",
+    "question": "請某個人隨便放一首歌，即興舞蹈15秒",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_39",
+    "type": "dare",
+    "question": "選一首歌的旋律，用你昨天的晚餐即興創作一小段",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_40",
+    "type": "dare",
+    "question": "用米老鼠的聲音講一段自我介紹",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_41",
+    "type": "dare",
+    "question": "假裝自己是流氓，但是在做一件很善良的好事",
+    "difficulty": "medium"
+  }
+]
