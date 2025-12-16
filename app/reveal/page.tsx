@@ -8,6 +8,20 @@ export default function RevealPage() {
   const [revealedGift, setRevealedGift] = useState<string | null>(null);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [password, setPassword] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState('');
+
+  const correctPassword = '901006';
+
+  const handlePasswordSubmit = () => {
+    if (password === correctPassword) {
+      setIsAuthenticated(true);
+      setAuthError('');
+    } else {
+      setAuthError('密碼錯誤，請重新輸入');
+    }
+  };
 
   const handleReveal = async () => {
     setIsLoading(true);
@@ -63,19 +77,47 @@ export default function RevealPage() {
           </div>
 
           <div className="space-y-6">
-            {error && (
+            {!isAuthenticated && (
+              <div className="bg-gray-700 border border-gray-600 rounded-lg p-6">
+                <h3 className="text-xl font-bold text-yellow-400 mb-4">🔒 密碼驗證</h3>
+                <p className="text-gray-300 mb-4">
+                  請輸入密碼以訪問揭露功能
+                </p>
+                <div className="space-y-3">
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500"
+                    placeholder="輸入密碼"
+                  />
+                  {authError && (
+                    <p className="text-red-400 text-sm">{authError}</p>
+                  )}
+                  <button
+                    onClick={handlePasswordSubmit}
+                    className="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-3 px-4 rounded-lg transition"
+                  >
+                    驗證密碼
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {isAuthenticated && error && (
               <div className="bg-red-900 bg-opacity-50 border border-red-500 rounded-lg p-4">
                 <p className="text-red-300 font-bold">❌ {error}</p>
               </div>
             )}
 
-            {message && (
+            {isAuthenticated && message && (
               <div className="bg-green-900 bg-opacity-50 border border-green-500 rounded-lg p-4">
                 <p className="text-green-300 font-bold">{message}</p>
               </div>
             )}
 
-            {revealedGift && (
+            {isAuthenticated && revealedGift && (
               <div className="bg-yellow-900 bg-opacity-50 border border-yellow-500 rounded-lg p-6 text-center">
                 <div className="text-6xl mb-4">🎁</div>
                 <h3 className="text-2xl font-bold text-yellow-300 mb-2">揭露結果</h3>
@@ -88,7 +130,7 @@ export default function RevealPage() {
               </div>
             )}
 
-            {!revealedGift && (
+            {isAuthenticated && !revealedGift && (
               <div className="bg-blue-900 bg-opacity-30 border border-blue-500 rounded-lg p-6 text-center">
                 <div className="text-4xl mb-4">🎲</div>
                 <h3 className="text-xl font-bold text-blue-300 mb-2">準備揭露情報？</h3>
@@ -99,32 +141,38 @@ export default function RevealPage() {
               </div>
             )}
 
-            <div className="bg-purple-900 bg-opacity-30 border border-purple-500 rounded-lg p-4">
-              <h4 className="font-bold text-purple-300 mb-2">📋 遊戲規則說明</h4>
-              <ul className="text-sm text-gray-300 space-y-1">
-                <li>• 遊戲過程中會交換手中的號碼牌，序號和禮物已無關聯</li>
-                <li>• 這是遊戲中的情報收集環節，幫助你了解尚未揭露的禮物</li>
-                <li>• 系統只會從未揭露的禮物中隨機選擇，避免重複揭露</li>
-                <li>• 揭露後該禮物將被永久標記為已揭露</li>
-              </ul>
-            </div>
+            {isAuthenticated && (
+              <div className="bg-purple-900 bg-opacity-30 border border-purple-500 rounded-lg p-4">
+                <h4 className="font-bold text-purple-300 mb-2">📋 遊戲規則說明</h4>
+                <ul className="text-sm text-gray-300 space-y-1">
+                  <li>• 遊戲過程中會交換手中的號碼牌，序號和禮物已無關聯</li>
+                  <li>• 這是遊戲中的情報收集環節，幫助你了解尚未揭露的禮物</li>
+                  <li>• 系統只會從未揭露的禮物中隨機選擇，避免重複揭露</li>
+                  <li>• 揭露後該禮物將被永久標記為已揭露</li>
+                </ul>
+              </div>
+            )}
 
-            <button
-              onClick={handleReveal}
-              disabled={isLoading}
-              className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg transition disabled:cursor-not-allowed text-lg"
-            >
-              {isLoading ? '🔄 揭露中...' : '🎯 隨機揭露一個禮物'}
-            </button>
-
-            <div className="text-center">
-              <Link
-                href="/vote"
-                className="text-gray-400 hover:text-yellow-400 transition"
+            {isAuthenticated && (
+              <button
+                onClick={handleReveal}
+                disabled={isLoading}
+                className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg transition disabled:cursor-not-allowed text-lg"
               >
-                已經玩夠了？去投票吧 →
-              </Link>
-            </div>
+                {isLoading ? '🔄 揭露中...' : '🎯 隨機揭露一個禮物'}
+              </button>
+            )}
+
+            {isAuthenticated && (
+              <div className="text-center">
+                <Link
+                  href="/vote"
+                  className="text-gray-400 hover:text-yellow-400 transition"
+                >
+                  已經玩夠了？去投票吧 →
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </main>
