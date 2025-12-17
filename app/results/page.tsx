@@ -91,7 +91,7 @@ export default function ResultsPage() {
                 <div className="relative flex justify-center items-end space-x-4 h-[28rem] mt-12 mb-8 px-4">
                   {/* 2nd Place - Silver */}
                   <div className="flex flex-col items-center w-1/3 max-w-[240px] z-10">
-                    {results[1] ? (
+                    {results[1] && results[1].votes > 0 ? (
                       <>
                         <div className="relative w-full aspect-square bg-gradient-to-b from-gray-200 to-gray-400 rounded-t-xl shadow-[0_0_20px_rgba(156,163,175,0.3)] border-t-4 border-l-4 border-r-4 border-gray-100 flex flex-col items-center justify-center p-4 transform hover:scale-105 transition-transform duration-300">
                           <div className="text-4xl md:text-5xl mb-3 drop-shadow-lg">🥈</div>
@@ -118,7 +118,7 @@ export default function ResultsPage() {
 
                   {/* 1st Place - Gold */}
                   <div className="flex flex-col items-center w-1/3 max-w-[280px] z-20 -mb-4">
-                    {results[0] ? (
+                    {results[0] && results[0].votes > 0 ? (
                       <>
                         <div className="relative w-full aspect-square bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-t-xl shadow-[0_0_30px_rgba(234,179,8,0.5)] border-t-4 border-l-4 border-r-4 border-yellow-200 flex flex-col items-center justify-center p-4 transform hover:scale-110 transition-transform duration-300">
                           <div className="absolute -top-12 animate-bounce">
@@ -140,12 +140,16 @@ export default function ResultsPage() {
                           <span className="text-6xl md:text-8xl font-black text-yellow-200 opacity-50 drop-shadow-md">1</span>
                         </div>
                       </>
-                    ) : null}
+                    ) : (
+                      <div className="w-full h-full flex items-end justify-center opacity-30">
+                        <div className="text-gray-500 font-bold">無人上榜</div>
+                      </div>
+                    )}
                   </div>
 
                   {/* 3rd Place - Bronze */}
                   <div className="flex flex-col items-center w-1/3 max-w-[240px] z-10">
-                    {results[2] ? (
+                    {results[2] && results[2].votes > 0 ? (
                       <>
                         <div className="relative w-full aspect-square bg-gradient-to-b from-orange-300 to-orange-500 rounded-t-xl shadow-[0_0_20px_rgba(249,115,22,0.3)] border-t-4 border-l-4 border-r-4 border-orange-200 flex flex-col items-center justify-center p-4 transform hover:scale-105 transition-transform duration-300">
                           <div className="text-4xl md:text-5xl mb-3 drop-shadow-lg">🥉</div>
@@ -172,7 +176,7 @@ export default function ResultsPage() {
                 </div>
 
                 {/* Winner Special Message */}
-                {winner && (
+                {winner && winner.votes > 0 && (
                   <div className="max-w-3xl mx-auto bg-gradient-to-r from-red-900 via-red-800 to-red-900 p-1 rounded-2xl shadow-[0_0_40px_rgba(220,38,38,0.3)] transform hover:scale-105 transition-transform duration-500">
                     <div className="bg-black bg-opacity-80 rounded-xl p-8 text-center border border-red-500/30 backdrop-blur-sm">
                       <div className="inline-block bg-red-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 animate-pulse">
@@ -212,49 +216,51 @@ export default function ResultsPage() {
               </div>
 
               {/* Full Rankings (All participants) */}
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-center text-gray-300">📊 完整排行榜</h3>
-                <div className="grid gap-4">
-                  {results.map((result, index) => {
-                    const isPodium = index < 3;
-                    const rankColor = index === 0 ? 'bg-yellow-500 text-black' : 
-                                     index === 1 ? 'bg-gray-300 text-black' : 
-                                     index === 2 ? 'bg-orange-600 text-white' : 
-                                     'bg-gray-600 text-white';
-                    
-                    return (
-                      <div
-                        key={result.giftName}
-                        className={`p-4 rounded-lg border transition ${
-                          isPodium 
-                            ? 'bg-gray-800 border-yellow-500/50 hover:border-yellow-500' 
-                            : 'bg-gray-800 border-gray-600 hover:border-gray-500'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-4">
-                            <div className={`${rankColor} w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg`}>
-                              {index + 1}
+              {results.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-center text-gray-300">📊 完整排行榜</h3>
+                  <div className="grid gap-4">
+                    {results.map((result, index) => {
+                      const isPodium = index < 3;
+                      const rankColor = index === 0 ? 'bg-yellow-500 text-black' : 
+                                       index === 1 ? 'bg-gray-300 text-black' : 
+                                       index === 2 ? 'bg-orange-600 text-white' : 
+                                       'bg-gray-600 text-white';
+                      
+                      return (
+                        <div
+                          key={result.giftName}
+                          className={`p-4 rounded-lg border transition ${
+                            isPodium 
+                              ? 'bg-gray-800 border-yellow-500/50 hover:border-yellow-500' 
+                              : 'bg-gray-800 border-gray-600 hover:border-gray-500'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-4">
+                              <div className={`${rankColor} w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg`}>
+                                {index + 1}
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-bold text-white">
+                                  {result.giftName}
+                                  {index === 0 && <span className="ml-2 text-sm text-yellow-400">👑</span>}
+                                </h4>
+                              </div>
                             </div>
-                            <div>
-                              <h4 className="text-lg font-bold text-white">
-                                {result.giftName}
-                                {index === 0 && <span className="ml-2 text-sm text-yellow-400">👑</span>}
-                              </h4>
+                            <div className="text-right">
+                              <div className={`text-2xl font-bold ${isPodium ? 'text-yellow-400' : 'text-blue-400'}`}>
+                                {result.votes}
+                              </div>
+                              <div className="text-sm text-gray-400">票</div>
                             </div>
-                          </div>
-                          <div className="text-right">
-                            <div className={`text-2xl font-bold ${isPodium ? 'text-yellow-400' : 'text-blue-400'}`}>
-                              {result.votes}
-                            </div>
-                            <div className="text-sm text-gray-400">票</div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Final Message */}
               <div className="bg-green-900 bg-opacity-30 border border-green-500 rounded-lg p-6 text-center">

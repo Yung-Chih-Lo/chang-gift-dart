@@ -11,15 +11,38 @@ export default function RevealPage() {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState('');
+  const [isAuthLoading, setIsAuthLoading] = useState(false);
 
-  const correctPassword = '901006';
+  const handlePasswordSubmit = async () => {
+    if (!password) {
+      setAuthError('請輸入密碼');
+      return;
+    }
 
-  const handlePasswordSubmit = () => {
-    if (password === correctPassword) {
-      setIsAuthenticated(true);
-      setAuthError('');
-    } else {
-      setAuthError('密碼錯誤，請重新輸入');
+    setIsAuthLoading(true);
+    setAuthError('');
+
+    try {
+      const response = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsAuthenticated(true);
+        setAuthError('');
+      } else {
+        setAuthError(data.error || '密碼錯誤，請重新輸入');
+      }
+    } catch (error) {
+      setAuthError('網路錯誤，請檢查網路連線後再試');
+    } finally {
+      setIsAuthLoading(false);
     }
   };
 
@@ -97,9 +120,10 @@ export default function RevealPage() {
                   )}
                   <button
                     onClick={handlePasswordSubmit}
-                    className="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-3 px-4 rounded-lg transition"
+                    disabled={isAuthLoading}
+                    className="w-full bg-yellow-600 hover:bg-yellow-700 disabled:bg-gray-600 text-black font-bold py-3 px-4 rounded-lg transition disabled:cursor-not-allowed"
                   >
-                    驗證密碼
+                    {isAuthLoading ? '驗證中...' : '驗證密碼'}
                   </button>
                 </div>
               </div>

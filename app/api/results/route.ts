@@ -22,11 +22,14 @@ export async function GET() {
       voteCounts[giftName] = (voteCounts[giftName] || 0) + 1;
     });
 
-    // 為所有禮物建立結果（包括0票的）
-    const results = allGifts.map(gift => ({
-      giftName: gift.initial_gift_name,
-      votes: voteCounts[gift.initial_gift_name] || 0
-    })).sort((a, b) => b.votes - a.votes);
+    // 為所有禮物建立結果，但只保留有投票數的（過濾掉0票的）
+    const results = allGifts
+      .map(gift => ({
+        giftName: gift.initial_gift_name,
+        votes: voteCounts[gift.initial_gift_name] || 0
+      }))
+      .filter(result => result.votes > 0) // 只保留投票數大於0的結果
+      .sort((a, b) => b.votes - a.votes);
 
     // 獲取總投票數
     const totalVotes = votes.length;
@@ -35,7 +38,7 @@ export async function GET() {
       success: true,
       results: results,
       totalVotes: totalVotes,
-      winner: results.length > 0 ? results[0] : null
+      winner: results.length > 0 && results[0].votes > 0 ? results[0] : null
     });
 
   } catch (error) {
