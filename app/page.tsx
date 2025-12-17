@@ -185,6 +185,17 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Phase 4: Performance */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <div className="bg-purple-600 text-white font-bold px-3 py-1 rounded-full text-sm">階段四</div>
+              <h3 className="text-xl font-bold text-purple-400">揭曉禮物</h3>
+            </div>
+            <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-purple-500">
+              <p className="text-gray-300 mb-4">依照序號小到大，拆開自己的禮物，和禮物主人合照。</p>
+            </div>
+          </div>
         </section>
 
         <footer className="text-center text-gray-600 text-sm mt-12 pb-8">
