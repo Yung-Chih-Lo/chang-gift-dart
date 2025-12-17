@@ -653,5 +653,143 @@
     "type": "dare",
     "question": "假裝自己是流氓，但是在做一件很善良的好事",
     "difficulty": "medium"
+  },
+  {
+    "id": "dare_42",
+    "type": "dare",
+    "question": "請喝一口酒，並提示一下你的禮物內容",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dare_43",
+    "type": "dare",
+    "question": "跟你左邊的同學喝交杯酒",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_44",
+    "type": "dare",
+    "question": "跟你右邊的同學喝交杯酒",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_45",
+    "type": "dare",
+    "question": "跟對面同學猜拳，輸的人喝一口酒",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_46",
+    "type": "dare",
+    "question": "打開LINE，搜尋‘晚安’，讓大家看你多渣。",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dare_47",
+    "type": "dare",
+    "question": "再玩兩次真心話大冒險",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_48",
+    "type": "dare",
+    "question": "透漏你是哪個禮物的主人，但不用講內容",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_49",
+    "type": "dare",
+    "question": "透漏你是哪個禮物的主人，但不用講內容",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_50",
+    "type": "dare",
+    "question": "透漏你是哪個禮物的主人，但不用講內容",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_51",
+    "type": "dare",
+    "question": "全場可對你問 3 個問題跟禮物相關的，你只能回答「是／不是／不知道」，不能解釋。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_52",
+    "type": "dare",
+    "question": "全場可對你問 3 個問題跟禮物相關的，你只能回答「是／不是／不知道」，不能解釋。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_53",
+    "type": "dare",
+    "question": "全場可對你問 3 個問題跟禮物相關的，你只能回答「是／不是／不知道」，不能解釋。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_54",
+    "type": "dare",
+    "question": "全場可對你問 3 個問題跟禮物相關的，你只能回答「是／不是／不知道」，不能解釋。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_55",
+    "type": "dare",
+    "question": "全場可對你問 3 個問題跟禮物相關的，你只能回答「是／不是／不知道」，不能解釋。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_56",
+    "type": "dare",
+    "question": "強制你跟右手邊互換禮物",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_57",
+    "type": "dare",
+    "question": "強制你跟左手邊互換禮物",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_58",
+    "type": "dare",
+    "question": "強制你跟對面互換禮物",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_59",
+    "type": "dare",
+    "question": "Double or Nothing：你可以選擇再射一次，命中 10 分以上可獲得一次「自主交換」，失敗則加倍喝酒。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_60",
+    "type": "dare",
+    "question": "Double or Nothing：你可以選擇再射一次，命中 10 分以上可獲得一次「自主交換」，失敗則加倍喝酒。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_61",
+    "type": "dare",
+    "question": "Double or Nothing：你可以選擇再射一次，命中 10 分以上可獲得一次「自主交換」，失敗則加倍喝酒。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_62",
+    "type": "dare",
+    "question": "懲罰反轉：你將獲得一次知道禮物的權利，且必須描述你看到的禮物，但只能使用一個形容詞（不能說出禮物名稱），逼大家用腦補來猜。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_63",
+    "type": "dare",
+    "question": "懲罰反轉：你將獲得一次知道禮物的權利，且必須描述你看到的禮物，但只能使用一個形容詞（不能說出禮物名稱），逼大家用腦補來猜。",
+    "difficulty": "medium"
+  },
+  {
+    "id": "dare_64",
+    "type": "dare",
+    "question": "懲罰反轉：你將獲得一次知道禮物的權利，且必須描述你看到的禮物，但只能使用一個形容詞（不能說出禮物名稱），逼大家用腦補來猜。",
+    "difficulty": "medium"
   }
 ]

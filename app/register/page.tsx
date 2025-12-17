@@ -58,8 +58,8 @@ export default function RegisterPage() {
       <main className="max-w-2xl mx-auto p-6">
         <div className="bg-gray-800 p-8 rounded-lg shadow-2xl border border-gray-700">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-yellow-400 mb-2">📝 禮物登記</h1>
-            <p className="text-gray-300">請輸入序號和帶來的廢物禮物名稱</p>
+            <h1 className="text-3xl font-bold text-yellow-400 mb-2">📝 匿名禮物登記</h1>
+            <p className="text-gray-300">請輸入序號和帶來的廢物禮物名稱，匿名處理，最後自行公布～</p>
           </div>
 
           {message && (

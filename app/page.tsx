@@ -74,7 +74,7 @@ export default function Home() {
               <ul className="list-disc list-inside space-y-2 text-sm">
                 <li><strong className="text-yellow-300">指定偷竊：</strong>搶奪任意一位持有者的禮物並交換</li>
                 <li><strong className="text-yellow-300">雙人互換：</strong>指定除自己外的兩位參與者 (A 和 B) 交換禮物</li>
-                <li><strong className="text-yellow-300">偷看情報：</strong>單獨偷看任意一位參與者手中禮物的內容（偷偷和送禮物者溝通），但不得洩露資訊</li>
+                <li><strong className="text-yellow-300">偷看情報：</strong>單獨偷看任意一人禮物內容，<span className="text-green-400">不得洩露</span></li>
               </ul>
             </div>
 
@@ -105,7 +105,7 @@ export default function Home() {
             <div className="bg-yellow-900 bg-opacity-40 p-4 border-l-4 border-yellow-500">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-lg font-bold text-yellow-500">1 - 10 分 or 射空 / 掉鏢</span>
-                <span className="text-xs text-yellow-500 uppercase font-bold">Punishment</span>
+                <span className="text-xs text-yellow-500 uppercase font-bold">處罰</span>
               </div>
               <p className="text-white font-bold text-lg">🍺 懲罰</p>
               <p className="text-sm text-gray-300 mt-1">射鏢者需要抽一張「真心話大冒險」卡片並執行，如果題目不想做，則喝下一口啤酒作為替代懲罰</p>
@@ -155,7 +155,7 @@ export default function Home() {
               <h3 className="text-xl font-bold text-green-400">遊戲進行</h3>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-green-500">
-              <p className="text-gray-300 mb-4">飛鏢競賽中獲得懲罰時使用，或想收集情報時使用</p>
+              <p className="text-gray-300 mb-4">飛鏢競賽中獲得懲罰時使用，或想收集情報時使用，遊戲一開始、一輪結束會揭露一個禮物。（視數量滾動調整）</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link href="/truth-or-dare" className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition text-center">
                   🎲 真心話大冒險
@@ -174,7 +174,7 @@ export default function Home() {
               <h3 className="text-xl font-bold text-red-400">最終決賽</h3>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-red-500">
-              <p className="text-gray-300 mb-4">遊戲結束後，所有人投票決定「最實用禮物」的優勝者</p>
+              <p className="text-gray-300 mb-4">遊戲結束後，所有人投票決定「最實用禮物」的優勝者，將獲得處罰。</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link href="/vote" className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition text-center">
                   🗳️ 投票

@@ -104,7 +104,7 @@ export default function RevealPage() {
               <div className="bg-gray-700 border border-gray-600 rounded-lg p-6">
                 <h3 className="text-xl font-bold text-yellow-400 mb-4">🔒 密碼驗證</h3>
                 <p className="text-gray-300 mb-4">
-                  請輸入密碼以訪問揭露功能
+                  請輸入主持人密碼，不要亂搞，Flag 不在 Sources 裡面。
                 </p>
                 <div className="space-y-3">
                   <input
