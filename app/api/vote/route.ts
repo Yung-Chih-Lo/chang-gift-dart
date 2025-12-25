@@ -3,12 +3,37 @@ import pb from '../pb_client';
 
 export async function POST(request: NextRequest) {
   try {
-    const { voterCode, targetGiftName } = await request.json();
+    const { voterCode, targetGiftName, password } = await request.json();
 
     if (!voterCode || !targetGiftName) {
       return NextResponse.json(
         { error: '投票者和目標禮物名稱都是必填的' },
         { status: 400 }
+      );
+    }
+
+    if (!password) {
+      return NextResponse.json(
+        { error: '需要提供管理員密碼才能進行投票' },
+        { status: 400 }
+      );
+    }
+
+    // 驗證管理員密碼
+    const correctPassword = process.env.PASSWORD;
+
+    if (!correctPassword) {
+      console.error('PASSWORD environment variable is not set');
+      return NextResponse.json(
+        { error: '伺服器配置錯誤' },
+        { status: 500 }
+      );
+    }
+
+    if (password !== correctPassword) {
+      return NextResponse.json(
+        { error: '管理員密碼錯誤' },
+        { status: 401 }
       );
     }
 

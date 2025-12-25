@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 
 interface Gift {
@@ -18,26 +18,77 @@ export default function VotePage() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+  const [password, setPassword] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState('');
+  const [isAuthLoading, setIsAuthLoading] = useState(false);
 
-  useEffect(() => {
-    // 載入所有禮物清單
-    fetch('/api/gifts')
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          setGifts(data.gifts);
-        } else {
-          setError('載入禮物清單失敗');
-        }
-      })
-      .catch(error => {
-        console.error('載入禮物清單失敗:', error);
-        setError('網路錯誤，無法載入禮物清單');
-      })
-      .finally(() => {
-        setIsLoading(false);
+  // 驗證管理員密碼
+  const handlePasswordSubmit = async () => {
+    if (!password) {
+      setAuthError('請輸入密碼');
+      return;
+    }
+
+    setIsAuthLoading(true);
+    setAuthError('');
+
+    try {
+      const response = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
       });
-  }, []);
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsAuthenticated(true);
+        setAuthError('');
+        // 驗證成功後自動載入禮物清單
+        await loadGifts();
+      } else {
+        setAuthError(data.error || '密碼錯誤，請重新輸入');
+      }
+    } catch (error) {
+      setAuthError('網路錯誤，請檢查網路連線後再試');
+    } finally {
+      setIsAuthLoading(false);
+    }
+  };
+
+  // 載入禮物清單
+  const loadGifts = async () => {
+    if (!password) {
+      setError('請先驗證管理員密碼');
+      return;
+    }
+
+    setIsLoading(true);
+    setError('');
+    setMessage('');
+
+    try {
+      const response = await fetch(`/api/gifts?password=${encodeURIComponent(password)}`);
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setGifts(data.gifts);
+      } else {
+        setError(data.error || '載入禮物清單失敗');
+        setGifts([]);
+      }
+    } catch (error) {
+      console.error('載入禮物清單失敗:', error);
+      setError('網路錯誤，無法載入禮物清單');
+      setGifts([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
 
   const handleVote = async () => {
     if (!voterCode.trim()) {
@@ -47,6 +98,11 @@ export default function VotePage() {
 
     if (!selectedGift) {
       setError('請選擇要投票的禮物');
+      return;
+    }
+
+    if (!password) {
+      setError('請先驗證管理員密碼');
       return;
     }
 
@@ -62,7 +118,8 @@ export default function VotePage() {
         },
         body: JSON.stringify({
           voterCode: voterCode.trim(),
-          targetGiftName: selectedGift
+          targetGiftName: selectedGift,
+          password: password
         }),
       });
 
@@ -129,69 +186,110 @@ export default function VotePage() {
 
           {!isSuccess && (
             <div className="space-y-6">
-              <div>
-                <label htmlFor="voterCode" className="block text-sm font-bold text-gray-300 mb-2">
-                  🎫 您的序號 *
-                </label>
-                <input
-                  type="text"
-                  id="voterCode"
-                  value={voterCode}
-                  onChange={(e) => setVoterCode(e.target.value)}
-                  className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition"
-                  placeholder="請輸入您的號碼牌號碼"
-                />
-                <p className="text-xs text-gray-500 mt-1">用於確認您的投票資格，每人只能投一次</p>
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold text-gray-300 mb-2">
-                  🎁 選擇最實用的禮物 *
-                </label>
-                <div className="space-y-2 max-h-60 overflow-y-auto">
-                  {gifts.map((gift) => (
-                    <div
-                      key={gift.code}
-                      onClick={() => setSelectedGift(gift.giftName)}
-                      className={`p-3 rounded-lg border cursor-pointer transition ${
-                        selectedGift === gift.giftName
-                          ? 'border-yellow-500 bg-yellow-900 bg-opacity-30'
-                          : 'border-gray-600 bg-gray-700 hover:bg-gray-650'
-                      }`}
+              {!isAuthenticated && (
+                <div className="bg-gray-700 border border-gray-600 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-yellow-400 mb-4">🔒 管理員密碼驗證</h3>
+                  <p className="text-gray-300 mb-4">
+                    請輸入主持人密碼以開啟投票功能，只有管理員可以開啟投票階段。
+                  </p>
+                  <div className="space-y-3">
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500"
+                      placeholder="輸入管理員密碼"
+                    />
+                    {authError && (
+                      <p className="text-red-400 text-sm">{authError}</p>
+                    )}
+                    <button
+                      onClick={handlePasswordSubmit}
+                      disabled={isAuthLoading}
+                      className="w-full bg-yellow-600 hover:bg-yellow-700 disabled:bg-gray-600 text-black font-bold py-3 px-4 rounded-lg transition disabled:cursor-not-allowed"
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-medium">{gift.giftName}</span>
-                        {gift.isRevealed && (
-                          <span className="text-xs bg-blue-600 px-2 py-1 rounded text-white">
-                            已揭露
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                      {isAuthLoading ? '驗證中...' : '驗證密碼'}
+                    </button>
+                  </div>
                 </div>
-                {gifts.length === 0 && (
-                  <p className="text-gray-500 text-center py-4">目前沒有可投票的禮物</p>
-                )}
-              </div>
+              )}
 
-              <div className="bg-red-900 bg-opacity-30 border border-red-500 rounded-lg p-4">
-                <h4 className="font-bold text-red-300 mb-2">⚠️ 投票規則</h4>
-                <ul className="text-sm text-gray-300 space-y-1">
-                  <li>• 序號僅用來控制投票資格，每個序號只能投一票</li>
-                  <li>• 遊戲過程中禮物會被交換，序號和禮物已無關聯</li>
-                  <li>• 得票最高的禮物將決定最終懲罰的接受者</li>
-                  <li>• 請謹慎投票，決定權在您手中！</li>
-                </ul>
-              </div>
+              {isAuthenticated && (
+                <>
+                  <div>
+                    <label htmlFor="voterCode" className="block text-sm font-bold text-gray-300 mb-2">
+                      🎫 您的序號 *
+                    </label>
+                    <input
+                      type="text"
+                      id="voterCode"
+                      value={voterCode}
+                      onChange={(e) => setVoterCode(e.target.value)}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition"
+                      placeholder="請輸入您的號碼牌號碼"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">用於確認您的投票資格，每人只能投一次</p>
+                  </div>
 
-              <button
-                onClick={handleVote}
-                disabled={isVoting || !voterCode.trim() || !selectedGift}
-                className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg transition disabled:cursor-not-allowed text-lg"
-              >
-                {isVoting ? '🗳️ 投票中...' : '🎯 確認投票'}
-              </button>
+                  <div>
+                    <label className="block text-sm font-bold text-gray-300 mb-2">
+                      🎁 選擇最實用的禮物 *
+                    </label>
+                    {isLoading ? (
+                      <div className="text-center py-4">
+                        <p className="text-gray-400">載入禮物清單中...</p>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="space-y-2 max-h-60 overflow-y-auto">
+                          {gifts.map((gift) => (
+                            <div
+                              key={gift.code}
+                              onClick={() => setSelectedGift(gift.giftName)}
+                              className={`p-3 rounded-lg border cursor-pointer transition ${
+                                selectedGift === gift.giftName
+                                  ? 'border-yellow-500 bg-yellow-900 bg-opacity-30'
+                                  : 'border-gray-600 bg-gray-700 hover:bg-gray-650'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="text-white font-medium">{gift.giftName}</span>
+                                {gift.isRevealed && (
+                                  <span className="text-xs bg-blue-600 px-2 py-1 rounded text-white">
+                                    已揭露
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        {gifts.length === 0 && (
+                          <p className="text-gray-500 text-center py-4">目前沒有可投票的禮物</p>
+                        )}
+                      </>
+                    )}
+                  </div>
+
+                  <div className="bg-red-900 bg-opacity-30 border border-red-500 rounded-lg p-4">
+                    <h4 className="font-bold text-red-300 mb-2">⚠️ 投票規則</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• 序號僅用來控制投票資格，每個序號只能投一票</li>
+                      <li>• 遊戲過程中禮物會被交換，序號和禮物已無關聯</li>
+                      <li>• 得票最高的禮物將決定最終懲罰的接受者</li>
+                      <li>• 請謹慎投票，決定權在您手中！</li>
+                    </ul>
+                  </div>
+
+                  <button
+                    onClick={handleVote}
+                    disabled={isVoting || !voterCode.trim() || !selectedGift}
+                    className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg transition disabled:cursor-not-allowed text-lg"
+                  >
+                    {isVoting ? '🗳️ 投票中...' : '🎯 確認投票'}
+                  </button>
+                </>
+              )}
             </div>
           )}
 
